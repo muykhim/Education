@@ -30,11 +30,25 @@ Provide a short and concise overview of the project. Mention the problem it solv
 
 - **Source:** 
 **[EdGap_data.xlsx]** (https://github.com/brian-fischer/DATA-5100/blob/main/EdGap_data.xlsx)
-**[ccd_sch_029_1617_w_1a_11212017.csv]**(https://www.dropbox.com/scl/fi/fkafjk8902sq8ptxh94r2/ccd_sch_029_1617_w_1a_11212017.csv?rlkey=gucrdz5f6e38bezz2y3yalxbw&e=1&dl=0)
+**[school_information.csv]**(https://www.dropbox.com/scl/fi/fkafjk8902sq8ptxh94r2/ccd_sch_029_1617_w_1a_11212017.csv?rlkey=gucrdz5f6e38bezz2y3yalxbw&e=1&dl=0)
 - **Description:** Brief overview of the dataset features, size, and format
 - **License:** (if applicable)
 
 ---
+
+## Data Preparation
+The raw education datasets were processed to create a clean dataset ready for analysis. The main steps included:
+1. Load raw dataset: [EdGap_data.xlsx]  and  [school_information.csv]
+2. Explore and inspect: Check data structure, column types, and missing values.
+3. Select and rename columns: Keep only relevant information (year, school ID, location, type) and rename columns for clarity and consistency.
+4. Join datasets: Merge EdGap data with school information using a left join to retain all primary records.
+5. Quality control: Remove invalid values, filter for relevant schools, and remove duplicates.
+6. Handle missing values: Drop rows with missing ACT scores and impute missing socioeconomic predictors using iterative regression-based imputation.
+7. Export cleaned dataset: Saved as education_clean.csv for further analysis.
+8. Notebook performing data preparation: code/education.ipynb
+9. Cleaned dataset: data/education_clean.csv
+
+--- 
 
 ## Analysis
 
