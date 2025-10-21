@@ -1,16 +1,16 @@
-# Project Title (This is a template README.md file that you can adapt to your project)
+# Predicting School Performance from Socioeconomic Factors
 
->This project analyzes educational data to explore patterns in school performance and equity across different regions.
+> This project investigates how socioeconomic characteristics and school-level factors relate to high school students’ average ACT scores across different regions.
 
 ---
 
 ## Project Overview
 
-Provide a short and concise overview of the project. Mention the problem it solves, the data used, and the key outcomes or findings.
+This project explores relationships between community and school-level socioeconomic factors and high school ACT performance.
 
-- **Objective:** Clearly state the main goal of the project.
-- **Domain:** (e.g., Healthcare, Finance, E-commerce, etc.)
-- **Key Techniques:** (e.g., Regression, Classification, Clustering, NLP, Time Series)
+- **Objective:** Identify how community-level socioeconomic factors influence school performance, focusing on variables such as unemployment rate, adult educational attainment, median household income, family structure, and percent of students receiving free or reduced-price lunch.
+- **Domain:** Education
+- **Key Techniques:** Data Cleaning, Data Preparation, Data Merging, Data Visualization, Exploratory Data Analysis (EDA), Heatmaps, Simple Linear Regression Modeling, Model Evaluation (Residuals, MAE, R²)
 
 ---
 
@@ -31,40 +31,47 @@ Provide a short and concise overview of the project. Mention the problem it solv
 - **Source:** 
 **[EdGap_data.xlsx]** (https://github.com/brian-fischer/DATA-5100/blob/main/EdGap_data.xlsx)
 **[school_information.csv]**(https://www.dropbox.com/scl/fi/fkafjk8902sq8ptxh94r2/ccd_sch_029_1617_w_1a_11212017.csv?rlkey=gucrdz5f6e38bezz2y3yalxbw&e=1&dl=0)
-- **Description:** Brief overview of the dataset features, size, and format
-- **License:** (if applicable)
+- **Description:** Datasets include school-level ACT scores, community demographics, and school characteristics.
+- **License:** Census Bureau’s American Community Survey; National Center for Education Statistics (NCES)
 
 ---
 
 ## Data Preparation
 The raw education datasets were processed to create a clean dataset ready for analysis. The main steps included:
-1. Load raw dataset: [EdGap_data.xlsx]  and  [school_information.csv]
-2. Explore and inspect: Check data structure, column types, and missing values.
-3. Select and rename columns: Keep only relevant information (year, school ID, location, type) and rename columns for clarity and consistency.
-4. Join datasets: Merge EdGap data with school information using a left join to retain all primary records.
-5. Quality control: Remove invalid values, filter for relevant schools, and remove duplicates.
-6. Handle missing values: Drop rows with missing ACT scores and impute missing socioeconomic predictors using iterative regression-based imputation.
-7. Export cleaned dataset: Saved as education_clean.csv for further analysis.
-8. Notebook performing data preparation: code/education.ipynb
-9. Cleaned dataset: data/education_clean.csv
-
+1. Load libraries and datasets – import pandas, numpy, seaborn, matplotlib, and statsmodels.
+Loaded raw dataset: [EdGap_data.xlsx]  and  [school_information.csv]
+2. Inspect and clean data – examined dataset structure, converted data types for merging, removed unnecessary columns, filtered for high schools, and replaced invalid values.
+3. Rename columns – ensure consistent, descriptive names using lowercase snake_case.
+4. Merge datasets – combine EdGap and school information using left join.
+5. Handle missing values – drop missing ACT scores and impute missing socioeconomic predictors using iterative regression-based imputation.
+6. Export cleaned dataset – saved as education_clean.csv for further analysis.
+- Cleaned dataset: data/education_clean.csv
 --- 
 
 ## Analysis
-
-Describe the notebooks and/or scripts used to perform the analysis. Specify the order in which the code should be run to reproduce the results.
+- **Notebook:** code/Education.ipynb
+- **Steps Taken:**:
+1. Load cleaned dataset.
+2. Conduct exploratory data analysis using a heatmap to explore correlations between ACT scores and socioeconomic factors.
+3. Build a simple linear regression model using percent_lunch (percentage of students receiving free or reduced-price lunch) as the predictor for ACT scores.
+4. Evaluate model performance using residual plots, MAE, and R-squared metrics.
+5. Interpret findings in clear, non-technical language.
 
 ---
 
 ## Results
+- The heatmap shows strong negative correlation between average ACT scores and the percentage of students receiving free or reduced-price lunch. Positive correlations exist with median income, percent of adults with college degrees, and percent married.
+- Regression analysis using percent_lunch as the sole predictor explains about 61% of the variation in ACT scores between schools.
+- Schools with higher proportions of low-income students tend to have lower ACT scores.
+- While percent_lunch is a strong predictor, other factors like household income, adult education, and community characteristics also influence ACT performance.
 
-Include a short discussion of the findings and what they imply.
+- Conclusion: Addressing socioeconomic disparities, especially supporting low-income students, could meaningfully improve ACT outcomes.
 
 ---
 
 ## Authors
 
-- Muykhim Ing - [@yourhandle](https://github.com/yourhandle)
+- Muykhim Ing - [@muykhim](https://github.com/muykhim)
 
 ---
 
@@ -76,6 +83,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgements
 
-- Tools/libraries used
-- Tutorials or papers referenced
-- Inspiration or collaborators
+- Python libraries: pandas, numpy, matplotlib, seaborn, statsmodels, scikit-learn
+- NCES and Census Bureau for datasets
+- DATA-5100 course materials by Dr. Brian Fischer
